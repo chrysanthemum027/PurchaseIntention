@@ -1,2 +1,2 @@
 # PurchaseIntention
-Finding Purchase Intention Using Twitted Data
+Finding Purchase Intention Using Twitter Data
