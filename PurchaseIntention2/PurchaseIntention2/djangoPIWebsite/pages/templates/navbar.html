@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Customer Intention Predicter{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  
+  <!-- <script src = "Chart.js"></script> -->
+  <style>
+    #tweets{
+      overflow: scroll;
+    }
+  </style>
+</head>
+<body>
+
+	<nav class="navbar navbar-default" style="background-color: white; font-size: 18px">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <img src="{% static 'images/logo.png' %}" style="height:100px;width:100px; margin-bottom: -40px; margin-top: -10px;">
+		</div>
+		<ul class="nav navbar-nav" style="color: red;">
+		  <li class=""><a href="{% url 'home' %}">Home</a></li>
+		  <!-- <li><a href="{% url 'dashboard' %}">Dashboard</a></li> -->
+      <li><a href="{% url 'analysis' %}">Analysis</a></li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Machine Learning
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 16px">
+            <a class="dropdown-item " id="annotated" href="{% url 'annotate' %}">Upload Annotated Data</a>
+            <a class="dropdown-item "  id="test" href="{% url 'test' %}">Upload Test Data</a>
+          </div>
+        </li>
+      <!-- <li><a href="{% url 'result' %}">Result</a></li> -->
+		</ul>
+		
+	  </div>
+  </nav>
+
+    <br>
+   
+
+   
+
+
+
+    <div class="">
+        <!-- <img src = "{% static 'images/heading.png' %}" style="height:50px;width:250px;margin-left:500px"> -->
+        <h1 style="text-align: center;">Purchase Intention Prediction Using Twitter Data</h1>
+        {% block content  %}
+        {% endblock %}
+    </div>
+    
+    <footer style="position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    text-align: center;">
+        <small> Copyright &copy; 2022 Ishita Choudhary - All Rights Reserved</small>
+    </footer>
+
+    <script>
+      $(".nav.navbar-nav li").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).addClass("active");
+      });
+    </script>
+    
+</body>
+</html>
+	

@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title  %}Home{% endblock %}
+
+{% block content %}
+<div class="home-content">
+  <!-- <h3>Features of the website</h3> -->
+  <div style="height: 20px;"></div>
+  <div class="features" style="background-color: rgb(222, 222, 222);">
+    <img src="{% static 'images/dashboard.png' %}" alt="dashboard" class="large-img">
+    Analyze data on different models to get the best results.
+  </div>
+  <div class="features">
+    Compare several sets of data using various types of graphs.
+    <img src="{% static 'images/graph_icons.png' %}" alt="dashboard">
+  </div>
+  <div class="features" style="background-color: rgb(222, 222, 222);">
+    <img src="{% static 'images/analytics.png' %}" alt="dashboard" class="large-img">
+    Get in-depth analysis of the purchase intention of the customers.
+  </div>
+  <div class="features">
+    Helps you find the target customers without much of a hassle.
+    <img src="{% static 'images/predicted_customers.png' %}" alt="dashboard">
+  </div>
+</div>
+{% endblock %}

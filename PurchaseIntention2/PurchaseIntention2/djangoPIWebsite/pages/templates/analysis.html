@@ -1,0 +1,105 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title  %}Analysis{% endblock %}
+{% block content  %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<!-- <script src="https://code.highcharts.com/modules/drilldown.js"></script> -->
+
+<!-- script src="https://code.highcharts.com/highcharts.js"></script> -->
+<script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+<br><br>
+<div style="margin: 0 60px;">
+    <div id="bar" style="min-width: 310px; height: 400px; margin: 0 auto" ></div>
+
+    <br>
+    
+    <img src="{% static 'images/wordcloud.png' %}" class="center" id="standee">
+    
+    <div style="text-align: center;">
+        <table class="table" id="table1">
+            <h3>Frequest Words in Corpus</h3>
+            <thead>
+              <tr>
+                <th scope="col"> Word </th>
+                <th scope="col">Count of Word</th>
+              </tr>
+            </thead>
+            <tbody>
+                    <!-- for i, v in s.iteritems():
+                    print('index: ', i, 'value: ', v) -->
+            {% for i, v in word.iteritems %}  
+                    <tr>
+                            <td>{{i}}</td> 
+                            <td>{{v}}</td> 
+                    </tr>
+            {%endfor%}  
+            </tbody>
+        </table>
+    </div>
+    <div style="height: 80px;"></div>
+</div>
+
+<script>
+    // Create the chart
+var yes = "{{count.yes}}";
+var no = "{{count.no}}";
+Highcharts.chart('bar', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Number of Positive and Negative Tweets'
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'count of tweets'
+        }
+
+    },
+    legend: {
+        enabled: true
+    },
+    plotOptions: {
+        series: {
+            // borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                // format: '{point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total tweets<br/>'
+    },
+    credits: {
+      enabled: false
+  },
+    series: [
+        {
+            name: "Tweet Type",
+            showInLegend: false,  
+            colorByPoint: true,
+            data: [
+                {
+                    name: "Positve Tweets",  
+                    y:  parseInt(yes),
+                },
+                {
+                    name: "Negative Tweets",
+                    y: parseInt(no),
+                }            
+            ]
+        }
+    ]
+    
+});
+
+</script>
+
+{% endblock %}
